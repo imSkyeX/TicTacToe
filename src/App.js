@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import MainMenu from './components/MainMenu';
+// import Pruebavanta from './components/Pruebavanta'
+import { Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+      <Header />
+      <Routes>
+        <Route path='/' element={<MainMenu />}/>
+        <Route path='/singleplayer' element={<h1>singleplayer</h1>}/>
+        <Route path='/multiplayer' element={<h1>multiplayer</h1>}/>
+        {/* <Route path='multiplayer:id' element={<h1>singleplayer</h1>}/>     ID O SOCKET?             */}
+      </Routes>
     </div>
   );
 }

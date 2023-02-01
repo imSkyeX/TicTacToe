@@ -1,0 +1,42 @@
+.game-selector a {
+    text-decoration: none;
+    font-family: 'Poppins-Black.ttf';
+    color: white;
+    background-color: black;
+    font-size: x-large;
+    padding-inline: 1rem;
+    border-radius: 0.75rem;
+    letter-spacing: 0.30rem;
+}
+
+.container {
+    background-color: grey;
+    color: white;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    height: calc(100vh - 97.17px);
+}
+
+.game-selector {
+    border-radius: 1rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    background-color: rgba(88, 88, 88, 0.5);
+    transition: transform .25s;
+    backdrop-filter: blur(10px);
+}
+
+a:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    white-space: nowrap;
+    font-family: 'Poppins-Bold.ttf';
+    text-align: center;
+}
