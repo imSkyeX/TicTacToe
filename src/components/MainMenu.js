@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import WAVES from "vanta/dist/vanta.waves.min";
 import * as THREE from "three";
 
-
 const MainMenu = () => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const vantaRef = useRef(null);
@@ -34,13 +33,12 @@ const MainMenu = () => {
     };
   }, [vantaEffect]);
 
-
   return (
     <div ref={vantaRef} className='container'>
       <div className='game-selector'>   
         <h1>Game<br/>Mode</h1>
-        <Link to='/singleplayer'><span className='game-button'>SINGLEPLAYER</span></Link>
-        <Link to='/multiplayer'><span className='game-button'>MULTIPLAYER</span></Link>
+        <Link to='/singleplayer' className='game-button'>SINGLEPLAYER</Link>
+        <Link to='/multiplayer' className='game-button'>MULTIPLAYER</Link>
       </div>
     </div>
   )

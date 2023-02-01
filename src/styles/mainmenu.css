@@ -1,4 +1,4 @@
-.game-selector a {
+.game-button {
     text-decoration: none;
     font-family: 'Poppins-Black.ttf';
     color: white;
@@ -7,9 +7,16 @@
     padding-inline: 1rem;
     border-radius: 0.75rem;
     letter-spacing: 0.30rem;
+    transition: transform .25s;
+}
+
+.game-button:hover {
+    background-color: rgb(43, 43, 43);
+    transform: scale(1.1);
 }
 
 .container {
+    user-select: none;
     background-color: grey;
     color: white;
     display: flex;           /* establish flex container */
@@ -27,13 +34,10 @@
     gap: 1rem;
     align-items: center;
     background-color: rgba(88, 88, 88, 0.5);
-    transition: transform .25s;
     backdrop-filter: blur(10px);
 }
 
-a:hover {
-    transform: scale(1.1);
-}
+
 
 h1 {
     white-space: nowrap;

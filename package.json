@@ -1,5 +1,6 @@
 {
-  "name": "3enraya",
+  "author": "Pablo & Jose Manuel",
+  "name": "tictactoe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
