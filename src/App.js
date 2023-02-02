@@ -3,6 +3,7 @@ import Header from './components/Header';
 import MainMenu from './components/MainMenu';
 // import Pruebavanta from './components/Pruebavanta'
 import { Routes, Route } from 'react-router-dom';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/multiplayer' element={<h1>multiplayer</h1>}/>
         {/* <Route path='multiplayer:id' element={<h1>singleplayer</h1>}/>     ID O SOCKET?             */}
       </Routes>
+      <Footer />
     </div>
   );
 }

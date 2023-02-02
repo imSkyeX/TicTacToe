@@ -1,0 +1,12 @@
+.footer-container {
+    color: whitesmoke;
+    background: rgb(37, 37, 37);
+}
+
+.footer-text {
+    user-select: none;
+    font-size: 1rem;
+    margin: 0;
+    text-align: left;
+    padding: 1rem;
+}
