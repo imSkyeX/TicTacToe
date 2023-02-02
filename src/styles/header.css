@@ -24,6 +24,12 @@
     flex-direction: row;
     gap: 1rem;
     align-items: center;
+    transition: transform .25s;
+}
+
+.box-logo:hover {
+    cursor: pointer;
+    transform: scale(0.95);
 }
 
 .friend-list a {
@@ -53,6 +59,12 @@
 
 }
 
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+}
 @media only screen and (max-width: 1200px){
     /*Tablets [601px -> 1200px]*/
 }

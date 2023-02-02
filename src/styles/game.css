@@ -1,9 +1,9 @@
 .game-container {
+    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: whitesmoke;
     height: calc(100vh - 97.17px);
 }
 
@@ -14,3 +14,9 @@
     gap: 5px;
 }
 
+@media only screen and (max-height: 425px){
+    .game-container{
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+}
