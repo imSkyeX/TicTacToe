@@ -1,0 +1,15 @@
+.button-style {
+    width: 115px;
+    height: 115px;
+    border-radius: 7%;
+    border: none;
+    background-color: lightgray;
+    transition: all .2s ease-in-out;
+    /* border-radius: 7%, 
+    border: 'none', 
+    backgroundColor: 'lightgrey', */
+}
+
+.button-style:hover {
+    transform: scale(0.95);
+}
