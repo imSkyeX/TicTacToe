@@ -7,8 +7,12 @@ import { update } from '../slices/boardSlice'
 const Square = ({pos, value}) => {
   const dispatch = useDispatch()
 
+  const handleClick = () => {
+    if(value === '') dispatch(update(pos))
+  }
+
   return (
-    <button onClick={() => dispatch(update(pos))} className='button-style'>{value}</button>
+    <button onClick={handleClick} className='button-style'>{value}</button>
   )
 }
 
