@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <div className='footer-container'>
         <div className='footer-text'>
-            Open source TicTacToe.<br /><br />
-            This project was developed using React.JS 
-            and is licensed under the MIT license.<br /><br />
+            <span>Open source TicTacToe.</span><br /><br />
+            This project was developed using <span>React.JS </span> 
+            and is licensed under the <span>MIT license. </span><br /><br />
             Developers:
             <ul>
                 <li>Pablo Sanchidrian</li>

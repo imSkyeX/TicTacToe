@@ -7,3 +7,13 @@
   font-family: 'Poppins-Bold.ttf';
   src: url('/src/fonts/Poppins-Bold.ttf');
 }
+
+@font-face {
+  font-family: 'Poppins-Thin.ttf';
+  src: url('/src/fonts/Poppins-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins-Light.ttf';
+  src: url('/src/fonts/Poppins-Light.ttf');
+}
