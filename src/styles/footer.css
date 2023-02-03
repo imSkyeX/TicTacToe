@@ -14,3 +14,13 @@
 span {
     font-family: 'Poppins-Light.ttf';
 }
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
