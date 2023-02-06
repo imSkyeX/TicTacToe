@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   value: ['', '', '', '', '', '', '', '', ''], 
-  turn: 'X'
+  turn: 'X',
+  gameover: false,
+  winner: undefined
 }
 
 export const boardSlice = createSlice({
@@ -16,10 +18,16 @@ export const boardSlice = createSlice({
     reset: (state) => {
       state.value = ['', '', '', '', '', '', '', '', '']
       state.turn = 'X'
+      state.gameover = false
+      state.winner = undefined
+    },
+    endGame(state, winner) {
+      state.gameover = true
+      state.winner = winner.payload
     }
   },
 })
 
-export const { update, reset } = boardSlice.actions
+export const { update, reset, endGame } = boardSlice.actions
 
 export default boardSlice.reducer

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import '../styles/game.css'
 import Square from './Square'
 import Header from './Header'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { update, reset } from '../slices/boardSlice'
+import { update, reset, endGame } from '../slices/boardSlice'
+import '../styles/game.css'
+import '../styles/button.css'
 
 const Game = () => {
   const board = useSelector((state) => state.board.value)
   const turn = useSelector((state) => state.board.turn)
-  const [over, setOver] = useState(false)
+  const gameOver = useSelector((state) => state.board.gameover)
+  const winner = useSelector((state) => state.board.winner)
   const dispatch = useDispatch()
 
   // check if there are free spaces left, return true or false
@@ -18,7 +20,7 @@ const Game = () => {
   }
 
   useEffect(() => {
-    if(checkFreeSpaces() && turn === 'O') {
+    if(turn === 'O') {
       axios({
         method: 'post',
         url: `${process.env.REACT_APP_API_URL}/aimove`,
@@ -31,37 +33,33 @@ const Game = () => {
         }
       })
       .then(res => { 
-        dispatch(update(res.data.move)) 
-        if (res.data.over || res.data.tie) {
-          setOver(true)
-          console.log(`Game Over: ${res.data.over} | Tie: ${res.data.tie} | Winner: ${res.data.winner}`)
+        if(res.data.move !== null) dispatch(update(res.data.move)) 
+
+        console.log(res.data)
+        if(res.data.over) {
+          console.log('Game over')
+          dispatch(endGame(res.data.winner))
+        } else if (res.data.tie) {
+          console.log('Game over tie')
+          dispatch(endGame(' '))
         }
       })
       .catch(err => console.error(err))
-    } else {
-      console.log('No free spaces left')
+
     }
   }, [turn])
-
-  useEffect(() => {
-    if(!over) return
-
-    setTimeout(() => {
-      dispatch(reset())
-    }, 2000)
-
-    setOver(false)
-  }, [over])
   
   return (
     <>
       <Header />
       <div className='game-container'>
-          <div className='board-container'>
-              {board.map((el, index) => {
-                  return <Square key={index} pos={index} value={el}/>
-              })}
-          </div>
+        {winner && <h1>{winner == ' ' ? 'TIE!' : `${winner} WINS!`}</h1>}
+        <div className='board-container'>
+          {board.map((el, index) => {
+              return <Square key={index} pos={index} value={el}/>
+          })}
+        </div>
+        <button className='button' onClick={() => dispatch(reset())}>Reset</button>
       </div>
     </>
   )

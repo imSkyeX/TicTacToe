@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 97.17px);
+    height: calc(100vh - 150px);
 }
 
 .board-container {
