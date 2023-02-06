@@ -16,7 +16,7 @@ const Game = () => {
       console.log('fetching ai move')
       axios({
         method: 'post',
-        url: 'http://localhost:5000/aimove',
+        url: `${process.env.API_URL}/aimove`,
         headers: {
           'Content-Type': 'application/json'
         },
