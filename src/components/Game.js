@@ -4,46 +4,55 @@ import Square from './Square'
 import Header from './Header'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
-import { update } from '../slices/boardSlice'
+import { update, reset } from '../slices/boardSlice'
 
 const Game = () => {
   const board = useSelector((state) => state.board.value)
   const turn = useSelector((state) => state.board.turn)
+  const [over, setOver] = useState(false)
   const dispatch = useDispatch()
 
+  // check if there are free spaces left, return true or false
+  const checkFreeSpaces = () => {
+    return board.includes('')
+  }
+
   useEffect(() => {
-    if(turn === 'O') {
-      console.log('fetching ai move')
+    if(checkFreeSpaces() && turn === 'O') {
       axios({
         method: 'post',
-        url: `${process.env.API_URL}/aimove`,
+        url: `${process.env.REACT_APP_API_URL}/aimove`,
         headers: {
           'Content-Type': 'application/json'
         },
-        // withCredentials: false,
+        withCredentials: false,
         data: {
           board: board,
         }
       })
-      .then(res => {console.log(res.data); dispatch(update(res.data.move)) })
+      .then(res => { 
+        dispatch(update(res.data.move)) 
+        if (res.data.over || res.data.tie) {
+          setOver(true)
+          console.log(`Game Over: ${res.data.over} | Tie: ${res.data.tie} | Winner: ${res.data.winner}`)
+        }
+      })
       .catch(err => console.error(err))
+    } else {
+      console.log('No free spaces left')
     }
   }, [turn])
 
-  // useEffect(() => {
-  //   if(turn === 'O') {
-  //     axios.get('/user', {
-  //       board: board
-  //     })
-  //   })
-  //   .then(function (response) {
-  //     console.log(response);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });  
-  // }, [turn])
+  useEffect(() => {
+    if(!over) return
 
+    setTimeout(() => {
+      dispatch(reset())
+    }, 2000)
+
+    setOver(false)
+  }, [over])
+  
   return (
     <>
       <Header />

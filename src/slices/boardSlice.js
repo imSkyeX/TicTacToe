@@ -15,6 +15,7 @@ export const boardSlice = createSlice({
     },
     reset: (state) => {
       state.value = ['', '', '', '', '', '', '', '', '']
+      state.turn = 'X'
     }
   },
 })
