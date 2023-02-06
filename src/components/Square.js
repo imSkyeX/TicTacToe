@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/square.css'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { update } from '../slices/boardSlice'
 import { motion } from "framer-motion";
 
@@ -72,10 +72,11 @@ const Circle = () => {
 }
 
 const Square = ({pos, value}) => {
+  const turn = useSelector((state) => state.board.turn)
   const dispatch = useDispatch()
 
   const handleClick = () => {
-    if(value === '') dispatch(update(pos))
+    if(turn === 'X' && value === '') dispatch(update(pos))
   }
 
   return (
