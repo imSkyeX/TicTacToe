@@ -13,7 +13,7 @@ const Game = () => {
   const gameOver = useSelector((state) => state.board.gameover)
   const winner = useSelector((state) => state.board.winner)
   const dispatch = useDispatch()
-
+  const controller = new AbortController()
   // check if there are free spaces left, return true or false
   const checkFreeSpaces = () => {
     return board.includes('')
@@ -30,7 +30,8 @@ const Game = () => {
         withCredentials: false,
         data: {
           board: board,
-        }
+        }, 
+        signal: controller.signal
       })
       .then(res => { 
         if(res.data.move !== null) dispatch(update(res.data.move)) 
@@ -46,6 +47,7 @@ const Game = () => {
       })
       .catch(err => console.error(err))
 
+      return () => controller.abort()
     }
   }, [turn])
   
